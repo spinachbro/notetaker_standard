@@ -5,7 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/app1/static')
+app.config['APPLICATION_ROOT'] = '/app1'
 app.config['SECRET_KEY'] = 'your-secret-key-here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notetaker.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -43,6 +44,7 @@ def load_user(user_id):
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
