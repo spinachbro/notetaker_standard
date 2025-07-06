@@ -41,10 +41,10 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # Routes
+
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
